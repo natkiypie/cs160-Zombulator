@@ -4,7 +4,7 @@ var zombieX = 50; // Step 1: This is an assignment statement. The "equal" sign m
 var zombie2X = 100;
 
 function setup() {
-	createCanvas(1000, 1000);
+	createCanvas(800, 800);
 }
 
 function draw() {
@@ -15,6 +15,13 @@ function draw() {
 	ellipse(zombie2X, 100, 80, 80);
   zombieX = zombieX + 1; // step 3: increment variable.
   zombie2X = zombie2X + 3;
+  if (zombieX >= 850) {
+      zombieX = 0; 
+}
+if (zombie2X >= 850) {
+      zombie2X = 0; 
+}
+
 }
 
 // Each line in between the curly brackets of the draw function is a statement. A statement is like a complete sentence. A semicolon terminates a statement(like a period!).
