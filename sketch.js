@@ -1,30 +1,25 @@
 // Zombulator by Nathaniel Pierce
 
-var zombieA = 50; // Step 1: This is an assignment statement. The "equal" sign means assignment. We are declaring a fact to the machine(50) and assigning it a variable(zombieA).
-
+var zombieA = 50;
 var zombieB = 100;
-
 var zombieC = 150;
-
 var zombieD = 75;
 
 function setup() {
-
-	createCanvas(800, 800);
-
+	createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
 
-  background(255, 255, 255); // clear background.
+  background(255, 255, 255);
 
   //zombieA
-	fill(150, 188, 60); // circle color.
-  stroke(67, 81, 50); // line color.
-  strokeWeight(10); // line thickness.
-	ellipse(zombieA, 50, 80, 80); // draw circle using variable.
-  zombieA = zombieA + 2; // increment variable.
-  if (zombieA >= 850) { // make zombie reappear.
+	fill(150, 188, 60);
+  stroke(67, 81, 50);
+  strokeWeight(10);
+	ellipse(zombieA, 50, 80, 80);
+  zombieA = zombieA + 2;
+  if (zombieA >= windowWidth) {
       zombieA = 0; 
   }
 
@@ -34,7 +29,7 @@ function draw() {
   strokeWeight (6);
 	ellipse(zombieB, 100, 60, 60);
   zombieB = zombieB + 3;
-  if (zombieB >= 850) {
+  if (zombieB >= windowWidth) {
       zombieB = 0; 
   }
 
@@ -44,7 +39,7 @@ function draw() {
   strokeWeight(15);
 	ellipse(zombieC, 150, 100, 100);
   zombieC = zombieC + 1;
-  if (zombieC >= 850) {
+  if (zombieC >= windowWidth) {
       zombieC = 0;
   }
 
@@ -54,20 +49,9 @@ function draw() {
   strokeWeight(5);
 	ellipse(zombieD, 150, 20, 20);
   zombieD = zombieD + 6;
-  if (zombieD >= 850) {
+  if (zombieD >= windowWidth) {
       zombieD = 0;
   }
 
 }
 
-// Each line in between the curly brackets of the draw function is a statement. A statement is like a complete sentence. A semicolon terminates a statement(like a period!).
-
-// Remember, as code, the way something is drawn is totally separate from what it is(a picture of a zombie is not a zombie).
-
-// This is a program written in Javascript, using a p5.js library(The library is preconfigured code that someone in the community made). When we give arguments to a function, the function calls the p5.js environment's library.
-
-// Every function call consists of two main parts: the identifier (the name of the function or the command) and a parenthesized, comma separated argument list (the information the function needs in order to do its job).
-
-// We're writing a procedural program in which one statement follows the next and order matters.
-
-// We're using two concepts of graphics: the painters model(if I pick up a pen it's going to stay in my hand until I pick up a different color pen) and the drawloop(In the p5.js environment, the code inside the draw function is set to loop). This allows us to do animation.
