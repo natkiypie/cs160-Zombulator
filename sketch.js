@@ -19,8 +19,8 @@ function draw() {
   background(255, 255, 255); // clear background.
 
   //zombieA
-	fill(101, 122, 74); // circle color.
-  stroke(255, 0, 170); // line color.
+	fill(150, 188, 60); // circle color.
+  stroke(67, 81, 50); // line color.
   strokeWeight(10); // line thickness.
 	ellipse(zombieA, 50, 80, 80); // draw circle using variable.
   zombieA = zombieA + 2; // increment variable.
@@ -30,7 +30,7 @@ function draw() {
 
   //zombieB
 	fill(201, 201, 22);
-  stroke(0, 255, 51);
+  stroke(215, 255, 40);
   strokeWeight (6);
 	ellipse(zombieB, 100, 60, 60);
   zombieB = zombieB + 3;
@@ -38,9 +38,9 @@ function draw() {
       zombieB = 0; 
   }
 
-  //zombieC
-  fill(142, 142, 99);
-  stroke (255, 0, 0);
+  //zombieC aka fatty
+  fill(99, 79, 112);
+  stroke (28, 12, 38);
   strokeWeight(15);
 	ellipse(zombieC, 150, 100, 100);
   zombieC = zombieC + 1;
