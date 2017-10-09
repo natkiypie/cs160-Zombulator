@@ -19,8 +19,9 @@ function draw() {
   background(255, 255, 255); // clear background.
 
   //zombieA
-	fill(101, 122, 74); // color
-  strokeWeight(10); // stroke
+	fill(101, 122, 74); // circle color.
+  stroke(255, 0, 170); // line color.
+  strokeWeight(10); // line thickness.
 	ellipse(zombieA, 50, 80, 80); // draw circle using variable.
   zombieA = zombieA + 2; // increment variable.
   if (zombieA >= 850) { // make zombie reappear.
@@ -29,6 +30,7 @@ function draw() {
 
   //zombieB
 	fill(201, 201, 22);
+  stroke(0, 255, 51);
   strokeWeight (6);
 	ellipse(zombieB, 100, 60, 60);
   zombieB = zombieB + 3;
@@ -38,6 +40,7 @@ function draw() {
 
   //zombieC
   fill(142, 142, 99);
+  stroke (255, 0, 0);
   strokeWeight(15);
 	ellipse(zombieC, 150, 100, 100);
   zombieC = zombieC + 1;
@@ -47,6 +50,7 @@ function draw() {
 
   //zombieD
   fill(255, 177, 22);
+  stroke (220, 0, 255);
   strokeWeight(5);
 	ellipse(zombieD, 150, 20, 20);
   zombieD = zombieD + 6;
