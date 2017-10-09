@@ -1,26 +1,58 @@
 // Zombulator by Nathaniel Pierce
 
-var zombieX = 50; // Step 1: This is an assignment statement. The "equal" sign means assignment. We are declaring a fact to the machine(50) and assigning it a variable(zombieX).
-var zombie2X = 100;
+var zombieA = 50; // Step 1: This is an assignment statement. The "equal" sign means assignment. We are declaring a fact to the machine(50) and assigning it a variable(zombieA).
+
+var zombieB = 100;
+
+var zombieC = 150;
+
+var zombieD = 75;
 
 function setup() {
+
 	createCanvas(800, 800);
+
 }
 
 function draw() {
-  background(255, 255, 255); // Step 4: clear background.
-	fill(101, 122, 74); // green
-	ellipse(zombieX, 50, 80, 80); // Step 2: use variable.
-	fill(132, 89, 84); // red
-	ellipse(zombie2X, 100, 80, 80);
-  zombieX = zombieX + 1; // step 3: increment variable.
-  zombie2X = zombie2X + 3;
-  if (zombieX >= 850) {
-      zombieX = 0; 
-}
-if (zombie2X >= 850) {
-      zombie2X = 0; 
-}
+
+  background(255, 255, 255); // clear background.
+
+  //zombieA
+	fill(101, 122, 74); // color
+  strokeWeight(10); // stroke
+	ellipse(zombieA, 50, 80, 80); // draw circle using variable.
+  zombieA = zombieA + 2; // increment variable.
+  if (zombieA >= 850) { // make zombie reappear.
+      zombieA = 0; 
+  }
+
+  //zombieB
+	fill(201, 201, 22);
+  strokeWeight (6);
+	ellipse(zombieB, 100, 60, 60);
+  zombieB = zombieB + 3;
+  if (zombieB >= 850) {
+      zombieB = 0; 
+  }
+
+  //zombieC
+  fill(142, 142, 99);
+  strokeWeight(15);
+	ellipse(zombieC, 150, 100, 100);
+  zombieC = zombieC + 1;
+  if (zombieC >= 850) {
+      zombieC = 0;
+  }
+
+  //zombieD
+  fill(255, 177, 22);
+  strokeWeight(5);
+	ellipse(zombieD, 150, 20, 20);
+  zombieD = zombieD + 6;
+  if (zombieD >= 850) {
+      zombieD = 0;
+  }
 
 }
 
