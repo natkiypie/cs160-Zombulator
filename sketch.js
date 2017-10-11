@@ -1,6 +1,6 @@
 // Zombulator by Nathaniel Pierce
 
-var zombieA = 50;
+var zombieY = 100;
 var zombieColor;
 var backgroundColor;
 
@@ -14,7 +14,8 @@ function draw() {
   background(backgroundColor);
   noStroke();
 	fill(zombieColor);
-  ellipse(windowWidth / 2, 100, 80, 80);
+  ellipse(windowWidth / 2, zombieY, 80, 80);
+  zombieY = zombieY + 10;
 
   }
 
