@@ -35,7 +35,7 @@ function draw() {
 
 function drawZombie(){
   fill(zombieColor);
-  ellipse(windowWidth / 2, zombieY, zombieSize, zombieSize);
+  rect(windowWidth / 2, zombieY, zombieSize, zombieSize);
 }
 
 function moveZombie(){
@@ -49,7 +49,7 @@ function moveZombie(){
 
 function drawHuman(){
   fill(humanColor);
-  ellipse(windowWidth / 4, humanY, humanSize, humanSize);
+  rect(windowWidth / 4, humanY, humanSize, humanSize);
   fill(0);
   text("human", windowWidth / 4, humanY);
 }
