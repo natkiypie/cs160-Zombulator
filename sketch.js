@@ -27,9 +27,11 @@ function draw() {
   background(backgroundColor);
   noStroke();
 
+  // Draw zombie
   fill(zombieColor);
   ellipse(windowWidth / 2, zombieY, zombieSize, zombieSize);
 
+  // Move zombie
   zombieY += zombieV;
   zombieV += zombieA;
   if (zombieY + (zombieSize / 2) >= windowHeight) {
@@ -37,11 +39,13 @@ function draw() {
     zombieV *= zombieDamping;
   }
 
+  // Draw human
   fill(humanColor);
   ellipse(windowWidth / 4, humanY, humanSize, humanSize);
   fill(0);
   text("human", windowWidth / 4, humanY);
 
+  // Move human
   humanY += humanV;
   humanV += humanA;
   if (humanY + (humanSize / 2) >= windowHeight) {
