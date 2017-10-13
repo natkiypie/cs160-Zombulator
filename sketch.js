@@ -27,30 +27,38 @@ function draw() {
   background(backgroundColor);
   noStroke();
 
-  // Draw zombie
+  drawZombie();
+  moveZombie();
+  drawHuman();
+  moveHuman();
+}
+
+function drawZombie(){
   fill(zombieColor);
   ellipse(windowWidth / 2, zombieY, zombieSize, zombieSize);
+}
 
-  // Move zombie
+function moveZombie(){
   zombieY += zombieV;
   zombieV += zombieA;
   if (zombieY + (zombieSize / 2) >= windowHeight) {
     zombieY = windowHeight - (zombieSize / 2);
     zombieV *= zombieDamping;
   }
+}
 
-  // Draw human
+function drawHuman(){
   fill(humanColor);
   ellipse(windowWidth / 4, humanY, humanSize, humanSize);
   fill(0);
   text("human", windowWidth / 4, humanY);
+}
 
-  // Move human
+function moveHuman(){
   humanY += humanV;
   humanV += humanA;
   if (humanY + (humanSize / 2) >= windowHeight) {
     humanY = windowHeight - (humanSize / 2);
     humanV *= humanDamping;
   }
-
 }
