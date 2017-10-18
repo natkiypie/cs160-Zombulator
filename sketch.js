@@ -3,8 +3,8 @@
 
 var backgroundColor;
 
-const MIN_SIZE = 25; // old browser? change to var.
-const MAX_SIZE = 500;
+const MIN_SIZE = 25;
+const MAX_SIZE = 200;
 
 var zombieX;
 var zombieY;
@@ -18,7 +18,7 @@ var humanColor;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  backgroundColor = color(0, 0, 0);
+  backgroundColor = color(52, 63, 81);
   initializeZombie();
   initializeHuman();
 }
@@ -26,7 +26,6 @@ function setup() {
 function draw() {
   background(backgroundColor);
   noStroke();
-
   drawZombie();
   drawHuman();
 }
@@ -39,7 +38,10 @@ function initializeZombie() {
 }
 
 function initializeHuman() {
-  // raaaawwwwwrrr!
+  humanX = random(0, windowWidth);
+  humanY = random(windowHeight / 4, windowHeight);
+  humanSize = random(MIN_SIZE, MAX_SIZE);
+  humanColor = color(random(50, 250), random(50, 250), random(50, 250), 150);
 }
 
 function drawZombie() {
@@ -48,6 +50,7 @@ function drawZombie() {
 }
 
 function drawHuman() {
-  // mmmm braaaiiiiinss!
+  fill(humanColor);
+  ellipse(humanX, humanY, humanSize, humanSize);
 }
 
