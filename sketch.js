@@ -18,7 +18,7 @@ var humanColor;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  backgroundColor = color(245, 255, 245);
+  backgroundColor = color(0, 0, 0);
   initializeZombie();
   initializeHuman();
 }
