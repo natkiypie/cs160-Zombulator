@@ -49,10 +49,6 @@ function initializeHumans() {
     initializeHuman(i);
   }
 }
-  humanXs = [];
-  humanYs = [];
-  humanSizes = [];
-  humanColors = [];
 
 function initializeHuman(index){
   humans[index] = {
