@@ -41,14 +41,12 @@ function initializeZombies() {
   }
 }
 
-function initializeZombie(index) { //<--parameter used in the function.
+function initializeZombie(index) {
   zombieXs[index] = random(0, windowWidth);
   zombieYs[index] = random(0, 200);
   zombieSizes[index] = random(MIN_SIZE, MAX_SIZE);
   zombieColors[index] = color(random(100, 255), random(50, 150), random(50, 150), 150);
 }
-
-//"Arguments are automatically assigned to a function's parameters when it is invoked. This is why parameters are also called 'automatic variables'."
 
 function initializeHumans() {
   humanXs = [];
@@ -56,11 +54,15 @@ function initializeHumans() {
   humanSizes = [];
   humanColors = [];
   for (var i = 0; i < NUMBER_OF_HUMANS; ++i) {
-    humanXs[i] = random(0, windowWidth);
-    humanYs[i] = random(windowHeight - 200, windowHeight);
-    humanSizes[i] = random(MIN_SIZE, MAX_SIZE);
-    humanColors[i] = color(random(50, 250), random(50, 250), random(50, 250), 150);
+    initializeHuman(i);
   }
+}
+
+function initializeHuman(index){
+  humanXs[index] = random(0, windowWidth);
+  humanYs[index] = random(windowHeight - 200, windowHeight);
+  humanSizes[index] = random(MIN_SIZE, MAX_SIZE);
+  humanColors[index] = color(random(50, 250), random(50, 250), random(50, 250), 150);
 }
 
 function drawZombies() {
@@ -78,10 +80,13 @@ function drawZombie(index) {
 
 function drawHumans() {
   for (var i = 0; i < NUMBER_OF_HUMANS; ++i) {
-    fill(humanColors [i]);
-    ellipse(humanXs[i], humanYs[i], humanSizes[i], humanSizes[i]);
-    fill(0, 0, 0);
-    text("human", humanXs[i], humanYs[i]);
+    drawHuman(i);
   }
 }
 
+function drawHuman(index){
+  fill(humanColors [index]);
+  ellipse(humanXs[index], humanYs[index], humanSizes[index], humanSizes[index]);
+  fill(0, 0, 0);
+  text("human", humanXs[index], humanYs[index]);
+}
