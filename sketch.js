@@ -1,6 +1,7 @@
 // Zombulator by Nathaniel
 
 var backgroundColor;
+var textColor;
 
 const MIN_SIZE = 5;
 const MAX_SIZE = 50;
@@ -9,14 +10,12 @@ const NUMBER_OF_HUMANS = 100;
 
 var zombies;
 
-var humanXs;
-var humanYs;
-var humanSizes;
-var humanColors;
+var humans;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   backgroundColor = color(52, 63, 81);
+  textColor = color(0, 0, 0);
   initializeZombies();
   initializeHumans();
 }
@@ -45,20 +44,23 @@ function initializeZombie(index) {
 }
 
 function initializeHumans() {
-  humanXs = [];
-  humanYs = [];
-  humanSizes = [];
-  humanColors = [];
+  humans = [];
   for (var i = 0; i < NUMBER_OF_HUMANS; ++i) {
     initializeHuman(i);
   }
 }
+  humanXs = [];
+  humanYs = [];
+  humanSizes = [];
+  humanColors = [];
 
 function initializeHuman(index){
-  humanXs[index] = random(0, windowWidth);
-  humanYs[index] = random(windowHeight - 200, windowHeight);
-  humanSizes[index] = random(MIN_SIZE, MAX_SIZE);
-  humanColors[index] = color(random(50, 250), random(50, 250), random(50, 250), 150);
+  humans[index] = {
+    x: random(0, windowWidth),
+    y: random(windowHeight - 200, windowHeight),
+    size: random(MIN_SIZE, MAX_SIZE),
+    color: color(random(50, 250), random(50, 250), random(50, 250), 150)
+  }
 }
 
 function drawZombies() {
@@ -71,8 +73,8 @@ function drawZombie(index) {
   var zombie = zombies[index];
   fill(zombie.color);
   ellipse(zombie.x, zombie.y, zombie.size, zombie.size);
-  fill(0, 0, 0);
-  text("zombie", zombie.x, zombie.y);
+  fill(textColor);
+  text("z", zombie.x, zombie.y);
 }
 
 function drawHumans() {
@@ -82,9 +84,10 @@ function drawHumans() {
 }
 
 function drawHuman(index){
-  fill(humanColors [index]);
-  ellipse(humanXs[index], humanYs[index], humanSizes[index], humanSizes[index]);
-  fill(0, 0, 0);
-  text("human", humanXs[index], humanYs[index]);
+  var human = humans[index];
+  fill(human.color);
+  ellipse(human.x, human.y, human.size, human.size);
+  fill(textColor);
+  text("h", human.x, human.y);
 }
 
