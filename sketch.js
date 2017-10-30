@@ -54,16 +54,24 @@ function initializeZombie(index) {
 function initializeHumans() {
   humans = [];
   for (var i = 0; i < NUMBER_OF_HUMANS; ++i) {
-    initializeHuman(i);
+    //initializeHuman(i);
+    humans[i] = initializeHuman();
   }
 }
 
-function initializeHuman(index) {
-  humans[index] = {
+function initializeHuman() {
+  return {
     x: random(0, windowWidth),
     y: random(windowHeight - 200, windowHeight),
     size: random(MIN_SIZE, MAX_SIZE),
-    color: color(random(50, 250), random(50, 250), random(50, 250), 150)
+    color: color(random(50, 250), random(50, 250), random(50, 250), 150),
+    draw: function() {
+      fill(this.color);
+      ellipse(this.x, this.y, this.size, this.size);
+    },
+    move: function() {
+      this.y -= 1;
+    }
   }
 }
 
@@ -81,24 +89,12 @@ function moveZombies() {
 
 function drawHumans() {
   for (var i = 0; i < NUMBER_OF_HUMANS; ++i) {
-    drawHuman(humans[i]);
+    humans[i].draw();
   }
-}
-
-function drawHuman(human) {
-  fill(human.color);
-  ellipse(human.x, human.y, human.size, human.size);
-  //fill(textColor);
-  //text("h", human.x, human.y);
 }
 
 function moveHumans() {
   for (var i = 0; i < NUMBER_OF_HUMANS; ++i) {
-    moveHuman(humans[i]);
+    humans[i].move();
   } 
 }
-
-function moveHuman(human) {
-  human.y -= 1;
-}
-
