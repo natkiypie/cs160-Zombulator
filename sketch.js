@@ -73,6 +73,7 @@ function initializeHuman() {
   return {
     x: random(0, windowWidth),
     y: random(windowHeight - 200, windowHeight),
+    speed: random(0.25, 3),
     size: random(MIN_SIZE, MAX_SIZE),
     color: color(random(50, 250), random(50, 250), random(50, 250), 150),
     draw: function() {
@@ -80,7 +81,16 @@ function initializeHuman() {
       ellipse(this.x, this.y, this.size, this.size);
     },
     move: function() {
-      this.y -= 1;
+      var direction = random(0, 100);
+      if (direction < 20) {
+        this.x += this.speed; 
+      } else if (direction < 40) {
+        this.x -= this.speed;
+      } else if (direction < 60) {
+        this.y += this.speed; 
+      } else {
+        this.y -= this.speed; 
+      }
     }
   }
 }
