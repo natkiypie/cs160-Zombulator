@@ -31,12 +31,12 @@ function draw() {
 function initializeZombies() {
   zombies = [];
   for (var i = 0; i < NUMBER_OF_ZOMBIES; ++i) {
-  initializeZombie(i);
+  zombies[i] = initializeZombie();
   }
 }
 
 function initializeZombie(index) {
-  zombies[index] = {
+  return {
     x: random(0, windowWidth),
     y: random(0, 200),
     size: random(MIN_SIZE, MAX_SIZE),
