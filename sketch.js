@@ -9,6 +9,9 @@ const POPULATION_SIZE = 500;
 
 var population = [];
 
+var zombieCount = 0;
+var humanCount = 0;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   backgroundColor = color(52, 63, 81);
@@ -20,6 +23,7 @@ function draw() {
   noStroke();
   drawPopulation();
   movePopulation();
+  drawPopulationCounts();
 }
 
 function initializePopulation() {
@@ -27,10 +31,20 @@ function initializePopulation() {
     var thing = random(0, 100);
     if (thing <= 50) {
       population[i] = initializeZombie();
+      ++zombieCount;
     } else {
       population[i] = initializeHuman();
+      ++humanCount;
     }
   }
+}
+
+function drawPopulationCounts() {
+  fill(0, 0, 0);
+  textSize(50)
+  textAlign(CENTER);
+  text("zombies: " + zombieCount, width / 2, 100);
+  text("humans: " + humanCount, width / 2, height - 100);
 }
 
 function drawPopulation() {
