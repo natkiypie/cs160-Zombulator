@@ -24,6 +24,20 @@ function draw() {
   drawPopulation();
   movePopulation();
   drawPopulationCounts();
+  handleCollisions();
+}
+
+function handleCollisions() {
+  for(var i = 0; i < POPULATION_SIZE; ++i) {
+    var attacker = population[i];
+    for (var j = i + 1; j < POPULATION_SIZE; ++j){
+      var target = population[j];
+      if (attacker.isTouching(target)) {
+        print("Fight!");
+      }
+
+    }
+  }
 }
 
 function initializePopulation() {
@@ -81,6 +95,9 @@ function initializeZombie() {
       } else {
         this.y += this.speed;
       }
+    },
+    isTouching: function(target) {
+
     }
   };
 }
@@ -107,6 +124,10 @@ function initializeHuman() {
       } else {
         this.y -= this.speed; 
       }
+    },
+    isTouching: function(target) {
+
     }
+
   }
 }
