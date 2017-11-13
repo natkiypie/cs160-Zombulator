@@ -1,11 +1,10 @@
 // Zombulator by Nathaniel
 
 var backgroundColor;
-//var textColor;
-
-const MIN_SIZE = 5;
-const MAX_SIZE = 50;
-const POPULATION_SIZE = 500;
+this is a change.
+const MIN_SIZE = 5; // jshint ignore:line
+const MAX_SIZE = 50; // jshint ignore:line
+const POPULATION_SIZE = 500; //jshint ignore:line 
 
 var population = [];
 
@@ -55,7 +54,7 @@ function initializePopulation() {
 
 function drawPopulationCounts() {
   fill(0, 0, 0);
-  textSize(50)
+  textSize(50);
   textAlign(CENTER);
   text("zombies: " + zombieCount, width / 2, 100);
   text("humans: " + humanCount, width / 2, height - 100);
@@ -129,5 +128,5 @@ function initializeHuman() {
 
     }
 
-  }
+  };
 }
