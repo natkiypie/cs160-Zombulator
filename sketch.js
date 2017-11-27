@@ -42,7 +42,6 @@ function handleCollisions() {
             target.draw = attacker.draw;
             target.move = attacker.move;
           } else {
-            target.move = target.stop;
             target.color = color(0, 0, 0,0);
             target.type = "zombie";
           }
@@ -110,10 +109,6 @@ function initializeZombie() {
         this.y += this.speed;
       }
     },
-    stop: function() {
-      this.x = this.x;
-      this.y = this.y;
-    },
     isTouching: function(target) {
       if (this.type == target.type) return false;
       var distance = dist(this.x, this.y, target.x, target.y);
@@ -145,10 +140,6 @@ function initializeHuman() {
       } else {
         this.y -= this.speed; 
       }
-    },
-    stop: function() {
-      this.x = this.x;
-      this.y = this.y;
     },
     isTouching: function(target) {
       if (this.type == target.type) return false;
