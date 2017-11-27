@@ -110,6 +110,7 @@ function initializeZombie() {
 
 function initializeHuman() {
   return {
+    type: "human",
     x: random(0, windowWidth),
     y: random(windowHeight - 200, windowHeight),
     speed: random(0.25, 3),
@@ -132,8 +133,13 @@ function initializeHuman() {
       }
     },
     isTouching: function(target) {
-
+      if (this.type == target.type) return false;
+      var distance = dist(this.x, this.y, target.x, target.y);
+      if (distance <= (this.size/2 + target.size/2)) {
+        return true;
+      } else {
+        return false;
+      }
     }
-
   };
 }
