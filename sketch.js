@@ -1,10 +1,10 @@
 // Zombulator by Nathaniel
 
 var backgroundColor;
-this is a change.
+
 const MIN_SIZE = 5; // jshint ignore:line
 const MAX_SIZE = 50; // jshint ignore:line
-const POPULATION_SIZE = 500; //jshint ignore:line 
+const POPULATION_SIZE = 200; //jshint ignore:line 
 
 var population = [];
 
@@ -96,7 +96,12 @@ function initializeZombie() {
       }
     },
     isTouching: function(target) {
-
+      var distance = dist(this.x, this.y, target.x, target.y);
+      if (distance <= (this.size/2 + target.size/2)) {
+        return true;
+      } else {
+        return false;
+      }
     }
   };
 }
