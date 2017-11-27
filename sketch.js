@@ -85,7 +85,7 @@ function initializeZombie() {
     color: color(80, random(50, 150), 0),
     draw: function() {
       fill(this.color);
-      ellipse(this.x, this.y, this.size, this.size);
+      rect(this.x, this.y, this.size, this.size);
     },
     move: function() {
       var direction = random(0, 100);
