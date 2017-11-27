@@ -74,6 +74,7 @@ function movePopulation() {
 
 function initializeZombie() {
   return {
+    type: "zombie",
     x: random(0, windowWidth),
     y: random(0, 200),
     speed: random(0.25, 3),
@@ -96,6 +97,7 @@ function initializeZombie() {
       }
     },
     isTouching: function(target) {
+      if (this.type == target.type) return false;
       var distance = dist(this.x, this.y, target.x, target.y);
       if (distance <= (this.size/2 + target.size/2)) {
         return true;
