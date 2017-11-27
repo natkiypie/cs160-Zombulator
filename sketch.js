@@ -99,11 +99,7 @@ function initializeZombie() {
     isTouching: function(target) {
       if (this.type == target.type) return false;
       var distance = dist(this.x, this.y, target.x, target.y);
-      if (distance <= (this.size/2 + target.size/2)) {
-        return true;
-      } else {
-        return false;
-      }
+      return distance <= (this.size/2 + target.size/2);
     }
   };
 }
@@ -135,11 +131,7 @@ function initializeHuman() {
     isTouching: function(target) {
       if (this.type == target.type) return false;
       var distance = dist(this.x, this.y, target.x, target.y);
-      if (distance <= (this.size/2 + target.size/2)) {
-        return true;
-      } else {
-        return false;
-      }
+      return distance <= (this.size/2 + target.size/2); 
     }
   };
 }
