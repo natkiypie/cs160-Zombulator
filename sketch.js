@@ -1,15 +1,18 @@
 // Zombulator by Nathaniel
 
-var backgroundColor;
-
 const MIN_SIZE = 5; // jshint ignore:line
 const MAX_SIZE = 50; // jshint ignore:line
 const POPULATION_SIZE = 200; //jshint ignore:line 
 
+var backgroundColor;
 var population = [];
-
 var zombieCount = 0;
 var humanCount = 0;
+var myFont;
+
+function preload() {
+  myFont = loadFont('fonts/strange/Strange.ttf');
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -53,9 +56,9 @@ function initializePopulation() {
 }
 
 function drawPopulationCounts() {
-  fill(0, 0, 0);
-  textSize(50);
+  fill(255, 0, 0);
   textAlign(CENTER);
+  textFont('Strange', 80);
   text("zombies: " + zombieCount, width / 2, 100);
   text("humans: " + humanCount, width / 2, height - 100);
 }
