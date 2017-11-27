@@ -41,6 +41,10 @@ function handleCollisions() {
             target.color = attacker.color;
             target.draw = attacker.draw;
             target.move = attacker.move;
+          } else {
+            target.move = target.stop;
+            target.color = color(0, 0, 0,0);
+            target.type = "zombie";
           }
         }
       }
