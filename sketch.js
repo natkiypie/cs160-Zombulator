@@ -80,7 +80,7 @@ function initializeZombie() {
     type: "zombie",
     x: random(0, windowWidth),
     y: random(0, 200),
-    speed: random(0.25, 3),
+    speed: random(0.5, 3.5),
     size: random(MIN_SIZE, MAX_SIZE),
     color: color(80, random(50, 150), 0),
     draw: function() {
@@ -89,11 +89,11 @@ function initializeZombie() {
     },
     move: function() {
       var direction = random(0, 100);
-      if (direction < 20) {
+      if (direction < 30) {
         this.x += this.speed;
-      } else if (direction < 40) {
+      } else if (direction < 50) {
         this.x -= this.speed;
-      } else if (direction < 60) {
+      } else if (direction < 70) {
         this.y -= this.speed; 
       } else {
         this.y += this.speed;
@@ -112,7 +112,7 @@ function initializeHuman() {
     type: "human",
     x: random(0, windowWidth),
     y: random(windowHeight - 200, windowHeight),
-    speed: random(0.25, 3),
+    speed: random(0.25, 1),
     size: random(MIN_SIZE, MAX_SIZE),
     color: color(random(140, 200), 120, 120),
     draw: function() {
@@ -121,11 +121,11 @@ function initializeHuman() {
     },
     move: function() {
       var direction = random(0, 100);
-      if (direction < 20) {
+      if (direction < 10) {
         this.x += this.speed; 
-      } else if (direction < 40) {
+      } else if (direction < 20) {
         this.x -= this.speed;
-      } else if (direction < 60) {
+      } else if (direction < 30) {
         this.y += this.speed; 
       } else {
         this.y -= this.speed; 
