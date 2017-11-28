@@ -2,7 +2,7 @@
 
 const MIN_SIZE = 5; // jshint ignore:line
 const MAX_SIZE = 50; // jshint ignore:line
-const POPULATION_SIZE = 200; //jshint ignore:line 
+const POPULATION_SIZE = 100; //jshint ignore:line 
 
 var backgroundColor;
 var population = [];
@@ -139,10 +139,16 @@ function handleCollisions() {
     var attacker = population[i];
     for (var j = i + 1; j < POPULATION_SIZE; ++j){
       var target = population[j];
-      if (attacker.isTouching(target)) {
-        print("Fight!");
+      if (attacker.isTouching(target) && attacker.type == "human" && attacker.size > target.size) {
+        target.move = target.stop;
+        target.color = color(79, 64, 37, 175);
+      } else if (attacker.isTouching(target) && attacker.type == "zombie" && attacker.size > target.size) {
+        target.type = "zombie";
+        target.draw = attacker.draw;
+        target.move = attacker.move;
+        target.color = attacker.color;
+        target.speed = attacker.speed;
       }
-
     }
   }
 }
