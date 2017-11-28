@@ -66,6 +66,10 @@ function initializeZombie() {
         this.y += this.speed;
       }
     },
+    stop: function() {
+      this.x = this.x;
+      this.y = this.y;
+    },
     isTouching: function(target) {
       if (this.type == target.type) return false;
       var distance = dist(this.x, this.y, target.x, target.y);
@@ -97,6 +101,10 @@ function initializeHuman() {
       } else {
         this.y -= this.speed; 
       }
+    },
+    stop: function() {
+      this.x = this.x;
+      this.y = this.y;
     },
     isTouching: function(target) {
       if (this.type == target.type) return false;
