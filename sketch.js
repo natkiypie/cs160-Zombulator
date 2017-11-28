@@ -72,6 +72,7 @@ function initializeZombie() {
     },
     isTouching: function(target) {
       if (this.type == target.type) return false;
+      if (target.type == "dead") return false;
       var distance = dist(this.x, this.y, target.x, target.y);
       return distance <= (this.size/2 + target.size/2);
     }
@@ -108,6 +109,7 @@ function initializeHuman() {
     },
     isTouching: function(target) {
       if (this.type == target.type) return false;
+      if (target.type == "dead") return false;
       var distance = dist(this.x, this.y, target.x, target.y);
       return distance <= (this.size/2 + target.size/2); 
     }
@@ -142,12 +144,20 @@ function handleCollisions() {
       if (attacker.isTouching(target) && attacker.type == "human" && attacker.size > target.size) {
         target.move = target.stop;
         target.color = color(79, 64, 37, 175);
+        target.type = "dead";
+        if (target.type == "dead") {
+          --zombieCount;
+        }
       } else if (attacker.isTouching(target) && attacker.type == "zombie" && attacker.size > target.size) {
         target.type = "zombie";
         target.draw = attacker.draw;
         target.move = attacker.move;
         target.color = attacker.color;
         target.speed = attacker.speed;
+        if (target.type == "zombie") {
+          --humanCount;
+          ++zombieCount;
+        }
       }
     }
   }
