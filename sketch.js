@@ -29,29 +29,6 @@ function draw() {
   handleCollisions();
 }
 
-function handleCollisions() {
-  for(var i = 0; i < POPULATION_SIZE; ++i) {
-    var attacker = population[i];
-    for (var j = i + 1; j < POPULATION_SIZE; ++j){
-      var target = population[j];
-      if (attacker.isTouching(target)) {
-        if (attacker.size > target.size) {
-          target.type = attacker.type;
-          if (attacker.type == "zombie") {
-            target.color = attacker.color;
-            target.draw = attacker.draw;
-            target.move = attacker.move;
-          } else {
-            target.color = color(0, 0, 0,0);
-            target.type = "zombie";
-          }
-        }
-      }
-
-    }
-  }
-}
-
 function initializePopulation() {
   for (var i = 0; i < POPULATION_SIZE; ++i) {
     var thing = random(0, 100);
@@ -62,26 +39,6 @@ function initializePopulation() {
       population[i] = initializeHuman();
       ++humanCount;
     }
-  }
-}
-
-function drawPopulationCounts() {
-  fill(255, 0, 0);
-  textAlign(CENTER);
-  textFont('Strange', 80);
-  text("zombies: " + zombieCount, width / 2, 100);
-  text("humans: " + humanCount, width / 2, height - 100);
-}
-
-function drawPopulation() {
-  for (var i = 0; i < POPULATION_SIZE; ++i) {
-    population[i].draw();
-  }
-}
-
-function movePopulation() {
-  for (var i = 0; i < POPULATION_SIZE; ++i) {
-    population[i].move();
   }
 }
 
@@ -147,4 +104,47 @@ function initializeHuman() {
       return distance <= (this.size/2 + target.size/2); 
     }
   };
+}
+
+function drawPopulation() {
+  for (var i = 0; i < POPULATION_SIZE; ++i) {
+    population[i].draw();
+  }
+}
+
+function movePopulation() {
+  for (var i = 0; i < POPULATION_SIZE; ++i) {
+    population[i].move();
+  }
+}
+
+function drawPopulationCounts() {
+  fill(255, 0, 0);
+  textAlign(CENTER);
+  textFont('Strange', 80);
+  text("zombies: " + zombieCount, width / 2, 100);
+  text("humans: " + humanCount, width / 2, height - 100);
+}
+
+function handleCollisions() {
+  for(var i = 0; i < POPULATION_SIZE; ++i) {
+    var attacker = population[i];
+    for (var j = i + 1; j < POPULATION_SIZE; ++j){
+      var target = population[j];
+      if (attacker.isTouching(target)) {
+        if (attacker.size > target.size) {
+          target.type = attacker.type;
+          if (attacker.type == "zombie") {
+            target.color = attacker.color;
+            target.draw = attacker.draw;
+            target.move = attacker.move;
+          } else {
+            target.color = color(0, 0, 0,0);
+            target.type = "zombie";
+          }
+        }
+      }
+
+    }
+  }
 }
