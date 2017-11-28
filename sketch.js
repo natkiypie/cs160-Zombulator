@@ -132,17 +132,7 @@ function handleCollisions() {
     for (var j = i + 1; j < POPULATION_SIZE; ++j){
       var target = population[j];
       if (attacker.isTouching(target)) {
-        if (attacker.size > target.size) {
-          target.type = attacker.type;
-          if (attacker.type == "zombie") {
-            target.color = attacker.color;
-            target.draw = attacker.draw;
-            target.move = attacker.move;
-          } else {
-            target.color = color(0, 0, 0,0);
-            target.type = "zombie";
-          }
-        }
+        print("Fight!");
       }
 
     }
