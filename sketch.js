@@ -12,7 +12,7 @@ var humanCount = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  backgroundColor = color(35, 35, 35);
+  backgroundColor = color(255);
   initializePopulation();
 }
 
