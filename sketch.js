@@ -41,6 +41,7 @@ function initializePopulation() {
 function initializeZombie() {
   return {
     type: "zombie",
+    condition: "alive",
     x: random(0, windowWidth),
     y: random(0, 200),
     speed: random(0.5, 3.5),
@@ -67,8 +68,7 @@ function initializeZombie() {
       this.y = this.y;
     },
     isTouching: function(target) {
-      if (this.type == target.type) return false;
-      if (target.type == "dead") return false;
+      if (this.type == target.type || target.condition == "convert" || target.condition == "dead") return false;
       var distance = dist(this.x, this.y, target.x, target.y);
       return distance <= (this.size/2 + target.size/2);
     }
@@ -78,6 +78,7 @@ function initializeZombie() {
 function initializeHuman() {
   return {
     type: "human",
+    condition: "alive",
     x: random(0, windowWidth),
     y: random(windowHeight - 200, windowHeight),
     speed: random(0.25, 2),
@@ -104,8 +105,7 @@ function initializeHuman() {
       this.y = this.y;
     },
     isTouching: function(target) {
-      if (this.type == target.type) return false;
-      if (target.type == "dead") return false;
+      if (this.type == target.type && target.condition != "convert" || target.condition == "dead") return false;
       var distance = dist(this.x, this.y, target.x, target.y);
       return distance <= (this.size/2 + target.size/2); 
     }
@@ -135,26 +135,32 @@ function drawPopulationCounts() {
 function handleCollisions() {
   for(var i = 0; i < POPULATION_SIZE; ++i) {
     var attacker = population[i];
-    for (var j = i + 1; j < POPULATION_SIZE; ++j){
+    for (var j = i + 1; j < POPULATION_SIZE; ++j) {
       var target = population[j];
-      if (attacker.isTouching(target) && attacker.type == "human" && attacker.size > target.size) {
-        target.move = target.stop;
-        target.color = color(79, 64, 37, 175);
-        target.type = "dead";
-        if (target.type == "dead") {
-          --zombieCount;
-        }
-      } else if (attacker.isTouching(target) && attacker.type == "zombie" && attacker.size > target.size) {
-        target.type = "zombie";
-        target.draw = attacker.draw;
-        target.move = attacker.move;
-        target.color = attacker.color;
-        target.speed = attacker.speed;
-        if (target.type == "zombie") {
-          --humanCount;
-          ++zombieCount;
-        }
+      if (attacker.isTouching(target)) {
+        fight(attacker, target);
       }
     }
   }
 }
+
+function fight(attacker, target) {
+  if (attacker.type == "human" && attacker.size > target.size) {
+    target.condition = "dead";
+    target.move = target.stop;
+    target.color = color(79, 64, 37, 175);
+    if (target.condition == "dead") {
+      --zombieCount;
+    }
+    } else if (attacker.type == "zombie" && attacker.size > target.size) {
+    target.condition = "convert";
+    target.color = attacker.color;
+    target.move = attacker.move;
+    target.speed = attacker.speed;
+      if (target.condition == "convert");
+      target.draw = attacker.draw;
+      ++zombieCount;
+      --humanCount;
+    }
+}
+
