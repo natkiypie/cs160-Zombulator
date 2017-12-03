@@ -8,11 +8,7 @@ var backgroundColor;
 var population = [];
 var zombieCount = 0;
 var humanCount = 0;
-var myFont;
 
-function preload() {
-  myFont = loadFont('fonts/strange/Strange.ttf');
-}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -129,9 +125,9 @@ function movePopulation() {
 }
 
 function drawPopulationCounts() {
-  fill(255, 0, 0);
+  fill(30);
   textAlign(CENTER);
-  textFont('Strange', 80);
+  textSize(30);
   text("zombies: " + zombieCount, width / 2, 100);
   text("humans: " + humanCount, width / 2, height - 100);
 }
