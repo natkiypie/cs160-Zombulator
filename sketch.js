@@ -48,7 +48,7 @@ function initializeZombie() {
     color: color(80, random(50, 150), 0),
     draw: function() {
       fill(this.color);
-      ellipse(this.x, this.y, this.size, this.size);
+      text("z", this.x, this.y, this.size);
     },
     move: function() {
       var direction = random(0, 100);
@@ -85,7 +85,7 @@ function initializeHuman() {
     color: color(random(140, 200), 120, 120),
     draw: function() {
       fill(this.color);
-      ellipse(this.x, this.y, this.size, this.size);
+      text("h", this.x, this.y, this.size);
     },
     move: function() {
       var direction = random(0, 100);
