@@ -42,6 +42,9 @@ function initializeZombie() {
   return {
     type: "zombie",
     condition: "alive",
+    a: 0.2,
+    v: 0,
+    d: -0.5,
     x: random(0, windowWidth),
     y: random(0, 200),
     speed: random(0.5, 3.5),
@@ -63,6 +66,14 @@ function initializeZombie() {
         this.y += this.speed;
       }
     },
+    drop: function() {
+      this.y += this.v;
+      this.v += this.a;
+      if (this.y + (this.size / 2) >= windowHeight) {
+        this.y = windowHeight - (this.size / 2);
+        this.v = this.v *= this.d;
+      }
+    },
     stop: function() {
       this.x = this.x;
       this.y = this.y;
@@ -81,6 +92,9 @@ function initializeHuman() {
     condition: "alive",
     x: random(0, windowWidth),
     y: random(windowHeight - 200, windowHeight),
+    a: 0.2,
+    v: 0,
+    d: -0.5,
     speed: random(0.25, 2),
     size: random(MIN_SIZE, MAX_SIZE),
     color: color(random(140, 200), 120, 120),
@@ -98,6 +112,14 @@ function initializeHuman() {
         this.y += this.speed; 
       } else {
         this.y -= this.speed; 
+      }
+    },
+    drop: function() {
+      this.y += this.v;
+      this.v += this.a;
+      if (this.y + (this.size / 2) >= windowHeight) {
+        this.y = windowHeight - (this.size / 2);
+        this.v = this.v *= this.d;
       }
     },
     stop: function() {
