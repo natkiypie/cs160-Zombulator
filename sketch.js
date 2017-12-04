@@ -10,8 +10,8 @@ var zombieCount = 0;
 var humanCount = 0;
 
 function preload() {
-  soundFormats('mp3', 'wav');
-  TRS80 = loadSound('sounds/Naturescent.wav');
+  soundFormats('mp3');
+  TRS80 = loadSound('sounds/naturescent.mp3');
 }
 
 function setup() {
