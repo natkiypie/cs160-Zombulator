@@ -47,7 +47,7 @@ function initializeZombie() {
     d: -0.5,
     x: random(0, windowWidth),
     y: random(0, 200),
-    speed: random(0.5, 3.5),
+    speed: random(0.25, 2),
     size: random(MIN_SIZE, MAX_SIZE),
     color: color(80, random(50, 150), 0),
     draw: function() {
@@ -56,17 +56,65 @@ function initializeZombie() {
     },
     move: function() {
       var direction = random(0, 100);
-      if (direction < 30) {
-        this.x += this.speed;
-      } else if (direction < 50) {
+      if (direction < 10) {
+        this.x += this.speed; 
+      } else if (direction < 20) {
         this.x -= this.speed;
-      } else if (direction < 70) {
-        this.y -= this.speed; 
+      } else if (direction < 90) {
+        this.y += this.speed; 
       } else {
-        this.y += this.speed;
+        this.y -= this.speed; 
       }
     },
-    drop: function() {
+    up: function() {
+      var direction = random(0, 100);
+      if (direction < 20) {
+        this.x += this.speed; 
+      } else if (direction < 40) {
+        this.x -= this.speed;
+      } else if (direction < 60) {
+        this.y += this.speed; 
+      } else {
+        this.y -= this.speed; 
+      }
+    },
+    down: function() {
+      var direction = random(0, 100);
+      if (direction < 20) {
+        this.x += this.speed; 
+      } else if (direction < 40) {
+        this.x -= this.speed;
+      } else if (direction < 80) {
+        this.y += this.speed; 
+      } else {
+        this.y -= this.speed; 
+      }
+    },
+    right: function() {
+      var direction = random(0, 100);
+      if (direction < 40) {
+        this.x += this.speed; 
+      } else if (direction < 60) {
+        this.x -= this.speed;
+      } else if (direction < 80) {
+        this.y += this.speed; 
+      } else {
+        this.y -= this.speed; 
+      }
+    },
+    left: function() {
+      var direction = random(0, 100);
+      if (direction < 20) {
+        this.x += this.speed; 
+      } else if (direction < 60) {
+        this.x -= this.speed;
+      } else if (direction < 80) {
+        this.y += this.speed; 
+      } else {
+        this.y -= this.speed; 
+      }
+    },
+   drop: function() {
       this.y += this.v;
       this.v += this.a;
       if (this.y + (this.size / 2) >= windowHeight) {
@@ -109,6 +157,54 @@ function initializeHuman() {
       } else if (direction < 20) {
         this.x -= this.speed;
       } else if (direction < 30) {
+        this.y += this.speed; 
+      } else {
+        this.y -= this.speed; 
+      }
+    },
+    up: function() {
+      var direction = random(0, 100);
+      if (direction < 10) {
+        this.x += this.speed; 
+      } else if (direction < 20) {
+        this.x -= this.speed;
+      } else if (direction < 30) {
+        this.y += this.speed; 
+      } else {
+        this.y -= this.speed; 
+      }
+    },
+    down: function() {
+      var direction = random(0, 100);
+      if (direction < 10) {
+        this.x += this.speed; 
+      } else if (direction < 20) {
+        this.x -= this.speed;
+      } else if (direction < 90) {
+        this.y += this.speed; 
+      } else {
+        this.y -= this.speed; 
+      }
+    },
+    right: function() {
+      var direction = random(0, 100);
+      if (direction < 70) {
+        this.x += this.speed; 
+      } else if (direction < 80) {
+        this.x -= this.speed;
+      } else if (direction < 90) {
+        this.y += this.speed; 
+      } else {
+        this.y -= this.speed; 
+      }
+    },
+    left: function() {
+      var direction = random(0, 100);
+      if (direction < 10) {
+        this.x += this.speed; 
+      } else if (direction < 80) {
+        this.x -= this.speed;
+      } else if (direction < 90) {
         this.y += this.speed; 
       } else {
         this.y -= this.speed; 
