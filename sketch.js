@@ -281,3 +281,17 @@ function fight(attacker, target) {
     }
 }
 
+function changeDirection() {
+  for (var i = 0; i < POPULATION_SIZE; ++i) {
+    var traveler = population[i];
+    if (traveler.condition == "alive" && traveler.y <= 0) {
+      traveler.move = traveler.down;
+    } else if (traveler.condition == "alive" && traveler.y >= windowHeight) {
+      traveler.move = traveler.up;
+    } else if (traveler.condition == "alive" && traveler.x <= 0) {
+      traveler.move = traveler.right;
+    } else if (traveler.condition == "alive" && traveler.x >= windowWidth) {
+      traveler.move = traveler.left;
+    }
+  }
+}
