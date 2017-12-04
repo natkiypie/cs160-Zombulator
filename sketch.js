@@ -8,7 +8,7 @@ var backgroundColor;
 var population = [];
 var zombieCount = 0;
 var humanCount = 0;
-var sound = new Audio('sounds/TRS-80Naturescent.mp3');
+var sound = new Audio('sounds/Naturescent.wav');
 
 
 function setup() {
