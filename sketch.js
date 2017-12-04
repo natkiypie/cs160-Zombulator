@@ -169,8 +169,7 @@ function handleCollisions() {
 function fight(attacker, target) {
   if (attacker.type == "human" && attacker.size > target.size) {
     target.condition = "dead";
-    target.move = target.stop;
-    target.color = color(79, 64, 37, 175);
+    target.move = target.drop;
     if (target.condition == "dead") {
       --zombieCount;
     }
