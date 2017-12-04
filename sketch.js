@@ -23,6 +23,7 @@ function draw() {
   movePopulation();
   drawPopulationCounts();
   handleCollisions();
+  changeDirection();
 }
 
 function initializePopulation() {
