@@ -1,3 +1,2 @@
 # Zombulator
-
-by Nathaniel Pierce
+Term project written in JavaScript using p5.js
